@@ -7,7 +7,6 @@ import ForestWorldThiefMoved from '../features/world/ForestWorldThiefMoved';
 import { useParams } from "react-router-dom";
 import API from "../utils/API";
 import MenuBtns from "../components/MenuBtns/MenuBtns"
-import { getUserSprite } from "../utils/newApi";
 
 function ForestGame() {
 
@@ -18,16 +17,19 @@ function ForestGame() {
     const [thiefTalk, setThiefTalk] = useState(null)
 
     useEffect(() => {
-        
-        const getData = async () => {
-            const reponse = await getUserSprite(id)
-            const sprite = await reponse.json()
+        API.getUserSprite(id).then(user => {
+            const { sprite } = user.data[0].sprite[0]
 
-            console.log(sprite);
-            setUserAvatar(sprite[0].sprite[0])
-        }
-
-        getData()
+            return setUserAvatar(sprite)
+        }).then(() => {
+            API.getUserSprite(id).then(user => {
+               
+                const { name, apiFirstThiefTalk } = user.data[0].sprite[0]
+                setUserAvatarName(name)
+                setThiefTalk(apiFirstThiefTalk)
+               
+            })
+        })
     }, []);
 
     function renderForest() {
