@@ -9,7 +9,8 @@ import Forest from "../components/MapLocations/Forest";
 import Village from "../components/MapLocations/Village";
 import Castle from "../components/MapLocations/Castle";
 import { useParams } from "react-router-dom";
-import API from "../utils/API";
+// import API from "../utils/API";
+import { getUserSprite } from "../utils/newApi";
 import MusicBtn from "../components/SoundBtns/MusicBtn";
 
 const styles = {
@@ -28,19 +29,29 @@ function Continue() {
     const [userAvatarMoney, setUserAvatarMoney] = useState(null)
 
     useEffect(() => {
-        API.getUserSprite(id).then(user => {
-            console.log(user);
-            const { sprite } = user.data[0].sprite[0]
 
-            return setUserAvatar(sprite)
-        }).then(() => {
+        const getData = async () => {
+            const reponse = await getUserSprite(id)
+            const sprite = await reponse.json()
 
-            API.getUserSprite(id).then(user => {
-                const { name } = user.data[0].sprite[0]
+            console.log(sprite);
+            setUserAvatar(sprite[0].sprite[0])
+        }
 
-                setUserAvatarName(name)
-            })
-        })
+        getData()
+        // API.getUserSprite(id).then(user => {
+        //     console.log(user);
+        //     const { sprite } = user.data[0].sprite[0]
+
+        //     return setUserAvatar(sprite)
+        // }).then(() => {
+
+        //     API.getUserSprite(id).then(user => {
+        //         const { name } = user.data[0].sprite[0]
+
+        //         setUserAvatarName(name)
+        //     })
+        // })
     }, []);
 
     return (
