@@ -31,19 +31,19 @@ function App() {
               <Team />
             </Route>
 
-            <Route path="/user/:id?">
+            <Route exact path="/user/:id?">
               <User />
             </Route>
 
-            <Route path="/continue/:id?">
+            <Route exact path="/continue/:id?">
               <Continue />
             </Route>
 
-            <Route path="/new/:id?">
+            <Route exact path="/new/:id?">
               <New />
             </Route>
 
-            <Route path="/castle/:id?">
+            <Route exact path="/castle/:id?">
               <CastleGame />
             </Route>
 

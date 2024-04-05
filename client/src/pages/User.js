@@ -22,7 +22,10 @@ function User() {
     const [useContinueButton, setContinueButton] = useState(null)
     
 
-   async function continueCheck()  {
+  
+
+    useEffect(() => {
+         async function continueCheck()  {
         await API.getUserSprite(id).then(user => {
             if (!user.data[0].sprite[0]){
                 setContinueButton(false);
@@ -31,8 +34,6 @@ function User() {
             }
         })
     };
-
-    useEffect(() => {
        continueCheck(); 
     
     }, []);
