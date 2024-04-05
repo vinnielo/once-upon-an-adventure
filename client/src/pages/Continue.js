@@ -28,18 +28,19 @@ function Continue() {
     const [userAvatarMoney, setUserAvatarMoney] = useState(null)
 
     useEffect(() => {
-        API.getUserSprite(id).then(user => {
-            console.log(user.json());
-            const { sprite } = user.data[0].sprite[0]
+        API.getUserSprite(id).then(response => {
+            
+            return response.json()
+            // const { sprite } = user.data[0].sprite[0]
 
-            return setUserAvatar(sprite)
-        }).then(() => {
+            // return setUserAvatar(sprite)
+        }).then((data) => {
+console.log(data);
+            // API.getUserSprite(id).then(user => {
+            //     const { name } = user.data[0].sprite[0]
 
-            API.getUserSprite(id).then(user => {
-                const { name } = user.data[0].sprite[0]
-
-                setUserAvatarName(name)
-            })
+            //     setUserAvatarName(name)
+            // })
         })
     }, []);
 
