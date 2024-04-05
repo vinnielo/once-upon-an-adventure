@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import "./MusicBtns.css"
 import API from "../../utils/API";
 import { gameMusic, gameMusic2, gameMusic3 } from "../../features/sound/index"
+import { getUserSprite } from "../../utils/newApi";
 
 
 function MusicBtn(props) {
@@ -12,11 +13,12 @@ function MusicBtn(props) {
     let currentMusic= gameMusic;
 
     useEffect(() => {
-        API.getUserSprite(id).then(user => {
-            if (!user.data[0].sprite[0]){
+        getUserSprite(id).then((response)=> response.json()).then(data => {
+            console.log(data);
+            if (!data[0].sprite[0]){
                 setMusicPlace("forest")
             }else{
-                const { place } = user.data[0].sprite[0].place
+                const { place } = data[0].sprite[0].place
                 setMusicPlace(place)
             }
         })
