@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
+  "homepage": "https://once-upon-an-adventure.onrender.com/",
   "proxy": "https://once-upon-an-adventure.onrender.com/",
   "dependencies": {
     "axios": "^0.18.0",
