@@ -29,6 +29,7 @@ function Continue() {
 
     useEffect(() => {
         API.getUserSprite(id).then(user => {
+            console.log(user);
             const { sprite } = user.data[0].sprite[0]
 
             return setUserAvatar(sprite)
