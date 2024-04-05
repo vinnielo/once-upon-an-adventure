@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "homepage": ".",
-  "proxy": "http://localhost:10000/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.6.3",
