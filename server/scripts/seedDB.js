@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactrpgDB");
+mongoose.connect('mongodb+srv://vinnielo001:password24@cluster0.ol3bz.mongodb.net/onceupon');
 
 const UserSeed = [
   {
