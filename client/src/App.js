@@ -47,7 +47,7 @@ function App() {
               <CastleGame />
             </Route>
 
-            <Route path="/forest/:id?">
+            <Route exact path="/forest/:id?">
               <ForestGame />
             </Route>
 
