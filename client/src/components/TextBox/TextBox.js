@@ -4,6 +4,7 @@ import API from "../../utils/API";
 import { withRouter } from "react-router";
 import Inventory from "../Inventory/Inventory";
 import { Link } from "react-router-dom";
+import { getUserSprite } from "../../utils/newApi";
 
 
 
@@ -42,14 +43,17 @@ class TextBox extends React.Component {
         const id = this.props.match.params.id;
 
         //set our username for our story
-        API.getUserSprite(id).then(user => {
-            const { name } = user.data[0].sprite[0]
+       getUserSprite(id).then(user => {
+        return user.json()
+  
+           
+        }).then((data)=>{
+
+            const { name } = data[0].sprite[0]
        
             userName = name
-           
-        }).then(()=>{
-            API.getUserSprite(id).then(user => {
-                const { sprite, homeFirst, lives, money } = user.data[0].sprite[0]
+            // getUserSprite(id).then(user => {
+                const { sprite, homeFirst, lives, money } = data[0].sprite[0]
            
                 this.setState({ image: sprite})
                 this.setState({ homeFirst: homeFirst})
@@ -68,7 +72,7 @@ class TextBox extends React.Component {
                     
                 }
                
-            })
+            // })
         })
         
     }
