@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "type": "module",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": "https://once-upon-an-adventure.onrender.com/",
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.6.3",
