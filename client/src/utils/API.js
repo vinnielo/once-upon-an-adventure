@@ -26,7 +26,7 @@ export default {
   },
 
   getUserSprite: function(id) {
-    return axios.get(`/api/user/avatar/${id}`)
+    return axios.get(`${process.env.REACT_APP_API}/api/user/avatar/${id}`)
   },
 
   getUserStory: function(id) {
